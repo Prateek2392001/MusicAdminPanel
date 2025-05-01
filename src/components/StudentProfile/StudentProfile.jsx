@@ -59,7 +59,7 @@ const StudentProfile = () => {
   return (
     <Container className="mt-4">
       <h3 className="mb-4 text-primary">Student Profiles</h3>
-      <Tabs defaultActiveKey="all" id="student-tab" className="mb-3">
+      <Tabs defaultActiveKey="pending" id="student-tab" className="mb-3">
         {/* Pending Students Tab */}
         <Tab eventKey="pending" title="Pending Students">
           <Table striped bordered hover responsive>
