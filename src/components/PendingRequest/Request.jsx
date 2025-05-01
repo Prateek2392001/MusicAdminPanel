@@ -153,6 +153,7 @@ const Request = () => {
                 <th>📌 ID</th>
                 <th>👤 Student Name</th>
                 <th>📚 Course Name</th>
+                <th>📅 Date</th>
                 <th>📊 Status</th>
                 {key === "pending" && <th>⚙️ Actions</th>}
               </tr>
@@ -172,6 +173,7 @@ const Request = () => {
                     </td>
                     <td>{request.userID?.name || "N/A"}</td>
                     <td>{request.courseID?.name || "N/A"}</td>
+                    <td>{request.date || "N/A"}</td>
                     <td
                       style={{
                         color:

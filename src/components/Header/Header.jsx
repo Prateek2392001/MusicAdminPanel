@@ -21,8 +21,7 @@ const Header = ({ handleOpen, open }) => {
         <ul className="navbar-nav">
           <li className="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 className="welcome-text">
-              Welcome to{" "}
-              <span className="text-black fw-bold">Mouj Maalik Admin</span>
+              Welcome to <span className="text-black fw-bold">Pathshala</span>
             </h1>
           </li>
         </ul>

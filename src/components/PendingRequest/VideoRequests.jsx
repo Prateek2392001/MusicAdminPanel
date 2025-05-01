@@ -135,6 +135,7 @@ const VideoRequests = () => {
                 <th>👨‍🏫 Teacher</th>
                 <th>🎬 Video Title</th>
                 <th>📚 Course</th>
+                <th>📅 Date</th>
                 <th>📊 Status</th>
                 {key === "pending" && <th>⚙️ Action</th>}
               </tr>
@@ -153,6 +154,7 @@ const VideoRequests = () => {
                     <td>{video.teacherID?.name || "N/A"}</td>
                     <td>{video.title}</td>
                     <td>{video.courseID?.name || "N/A"}</td>
+                    <td>{new Date(video.createdAt).toLocaleDateString()}</td>
                     <td
                       style={{
                         color:
