@@ -14,6 +14,7 @@ const AddCourse = ({ show, handleClose, refreshList }) => {
     title: "",
     mediaType: "video",
     media: null,
+    duration: "",
   });
 
   const [categories, setCategories] = useState([]);
@@ -91,6 +92,10 @@ const AddCourse = ({ show, handleClose, refreshList }) => {
         formDataToSend.append("thumbnail", formData.thumbnail);
       }
 
+      if (formData.mediaType === "video") {
+        formDataToSend.append("duration", formData.duration);
+      }
+
       const response = await axios.post(
         `${api}/courses/create`,
         formDataToSend,
@@ -115,6 +120,7 @@ const AddCourse = ({ show, handleClose, refreshList }) => {
           title: "",
           mediaType: "video",
           media: null,
+          duration: "",
         });
         refreshList();
         setTimeout(() => handleClose(), 1500);
@@ -231,6 +237,19 @@ const AddCourse = ({ show, handleClose, refreshList }) => {
               required
             />
           </Form.Group>
+
+          {formData.mediaType === "video" && (
+            <Form.Group className="mb-3">
+              <Form.Label>Duration (minutes)</Form.Label>
+              <Form.Control
+                type="number"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          )}
         </Form>
       </Modal.Body>
       <Modal.Footer>

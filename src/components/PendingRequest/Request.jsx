@@ -173,7 +173,14 @@ const Request = () => {
                     </td>
                     <td>{request.userID?.name || "N/A"}</td>
                     <td>{request.courseID?.name || "N/A"}</td>
-                    <td>{request.date || "N/A"}</td>
+                    <td>
+                      {new Date(request.createdAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                      })}
+                    </td>
+
                     <td
                       style={{
                         color:

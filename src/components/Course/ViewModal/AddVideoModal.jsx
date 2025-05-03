@@ -9,6 +9,7 @@ const AddVideoModal = ({ show, handleClose, course_id, refreshMediaList }) => {
     title: "",
     mediaType: "video",
     media: null,
+    duration: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -70,6 +71,7 @@ const AddVideoModal = ({ show, handleClose, course_id, refreshMediaList }) => {
       formDataToSend.append("media", formData.media);
       formDataToSend.append("document", formData.document);
       if (formData.mediaType === "video") {
+        formDataToSend.append("duration", formData.duration);
       }
 
       console.log("Payload being sent:", [...formDataToSend.entries()]);
@@ -163,6 +165,19 @@ const AddVideoModal = ({ show, handleClose, course_id, refreshMediaList }) => {
               accept={formData.mediaType === "document" ? ".pdf" : ""}
             />
           </Form.Group>
+
+          {formData.mediaType === "video" && (
+            <Form.Group className="mb-3">
+              <Form.Label>Duration (minutes)</Form.Label>
+              <Form.Control
+                type="number"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+          )}
 
           <Button
             variant="primary"
