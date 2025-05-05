@@ -7,7 +7,7 @@ import {
   Form,
   InputGroup,
 } from "react-bootstrap";
-import { FaTrash, FaSearch, FaEdit } from "react-icons/fa";
+import { FaTrash, FaSearch, FaEdit, FaRegFrown } from "react-icons/fa";
 import axios from "axios";
 import AddCategory from "./Modal/AddCategory";
 import UpdateCategory from "./Modal/UpdateCategory";
@@ -113,9 +113,21 @@ const Categories = () => {
             </thead>
             <tbody>
               {currentItems.length === 0 ? (
+                // <tr>
+                //   <td colSpan="4" className="text-center text-muted py-3">
+                //     No categories available
+                //   </td>
+                // </tr>
                 <tr>
-                  <td colSpan="4" className="text-center text-muted py-3">
-                    No categories available
+                  <td colSpan="8" className="text-center py-5">
+                    <div>
+                      <div style={{ fontSize: "3rem", color: "#999" }}>
+                        <FaRegFrown />
+                      </div>
+                      <div className="mt-2 text-muted">
+                        No services available
+                      </div>
+                    </div>
                   </td>
                 </tr>
               ) : (

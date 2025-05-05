@@ -218,12 +218,13 @@ const VideoRequests = () => {
   return (
     <div className="container">
       <div className="card p-4 shadow-lg bg-light">
-        <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
-          <Tab eventKey="pending" title="Pending">
-            {renderTable(pendingVideos)}
-          </Tab>
+        {/* <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3"> */}
+        <Tabs defaultActiveKey="all" className="mb-3">
           <Tab eventKey="all" title="All Videos">
             {renderTable(allVideos)}
+          </Tab>
+          <Tab eventKey="pending" title="Pending">
+            {renderTable(pendingVideos)}
           </Tab>
         </Tabs>
       </div>

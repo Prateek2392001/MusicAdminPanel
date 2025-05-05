@@ -5,6 +5,7 @@ import { Form, Table, Alert, Spinner, Button, Row, Col } from "react-bootstrap";
 import MarkModal from "./Modal/MarkModal";
 import UpdateModal from "./Modal/UpdateModal";
 import { api } from "../../api";
+// import { FaRegFrown } from "react-icons/fa";
 
 const Attendance = () => {
   const [students, setStudents] = useState([]);
@@ -130,6 +131,16 @@ const Attendance = () => {
             </tr>
           </thead>
           <tbody>
+            {/* <tr>
+              <td colSpan="8" className="text-center py-5">
+                <div>
+                  <div style={{ fontSize: "3rem", color: "#999" }}>
+                    <FaRegFrown />
+                  </div>
+                  <div className="mt-2 text-muted">No Attendance found</div>
+                </div>
+              </td>
+            </tr> */}
             {attendance.map((att) => (
               <tr key={att._id}>
                 <td>{att.courseId?.name || "N/A"}</td>

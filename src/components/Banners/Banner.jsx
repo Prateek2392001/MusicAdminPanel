@@ -6,6 +6,7 @@ import AddBanner from "./Modals/AddBanner";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import UpdateBanner from "./Modals/UpdateBanner";
 import DeleteBanner from "./Modals/DeleteBanner";
+import Cookies from "js-cookie";
 
 const Banner = () => {
   const [banners, setBanners] = useState([]);
@@ -17,7 +18,13 @@ const Banner = () => {
 
   const getBanners = async () => {
     try {
-      const res = await axios.get(`${api}/banners/get`);
+      // const res = await axios.get(`${api}/banners/get`);
+      const token = Cookies.get("SuperAdminToken");
+      const res = await axios.get(`${api}/banners/get`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.data.status === 1) {
         setBanners(res.data.data);
       }

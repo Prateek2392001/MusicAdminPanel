@@ -3,6 +3,7 @@ import axios from "axios";
 import { Tab, Tabs, Table, Container, Button } from "react-bootstrap";
 import ApproveModal from "./Modal/ApproveModal";
 import { api } from "../../api";
+import { FaRegFrown } from "react-icons/fa";
 
 const StudentProfile = () => {
   const [allStudents, setAllStudents] = useState([]);
@@ -59,7 +60,49 @@ const StudentProfile = () => {
   return (
     <Container className="mt-4">
       <h3 className="mb-4 text-primary">Student Profiles</h3>
-      <Tabs defaultActiveKey="pending" id="student-tab" className="mb-3">
+      <Tabs defaultActiveKey="all" id="student-tab" className="mb-3">
+        {/* All Students Tab */}
+        <Tab eventKey="all" title="All Students">
+          <Table striped bordered hover responsive>
+            <thead>
+              <tr>
+                <th>🆔 ID</th>
+                <th>👤 Student Name</th>
+                <th>📞 Contact</th>
+                <th>📧 Email</th>
+                <th>👨 Father</th>
+                <th>👩 Mother</th>
+                <th>🌍 Country</th>
+                <th>✅ Approved</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* <tr>
+                <td colSpan="8" className="text-center py-5">
+                  <div>
+                    <div style={{ fontSize: "3rem", color: "#999" }}>
+                      <FaRegFrown />
+                    </div>
+                    <div className="mt-2 text-muted">No Profile found</div>
+                  </div>
+                </td>
+              </tr> */}
+              {allStudents.map((item, index) => (
+                <tr key={item._id || index}>
+                  <td>{index + 1}</td>
+                  <td>{item.student?.name || "-"}</td>
+                  <td>{item.student?.contact || "-"}</td>
+                  <td>{item.student?.email || "-"}</td>
+                  <td>{item.fatherName || "-"}</td>
+                  <td>{item.motherName || "-"}</td>
+                  <td>{item.country || "-"}</td>
+                  <td>{item.student?.isApproved ? "Yes" : "No"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Tab>
+
         {/* Pending Students Tab */}
         <Tab eventKey="pending" title="Pending Students">
           <Table striped bordered hover responsive>
@@ -77,6 +120,16 @@ const StudentProfile = () => {
               </tr>
             </thead>
             <tbody>
+              {/* <tr>
+                <td colSpan="8" className="text-center py-5">
+                  <div>
+                    <div style={{ fontSize: "3rem", color: "#999" }}>
+                      <FaRegFrown />
+                    </div>
+                    <div className="mt-2 text-muted">No Profile found</div>
+                  </div>
+                </td>
+              </tr> */}
               {pendingStudents.map((student, index) => (
                 <tr key={student._id || index}>
                   <td>{index + 1}</td>
@@ -104,7 +157,7 @@ const StudentProfile = () => {
         </Tab>
 
         {/* All Students Tab */}
-        <Tab eventKey="all" title="All Students">
+        {/* <Tab eventKey="all" title="All Students">
           <Table striped bordered hover responsive>
             <thead>
               <tr>
@@ -133,7 +186,7 @@ const StudentProfile = () => {
               ))}
             </tbody>
           </Table>
-        </Tab>
+        </Tab> */}
       </Tabs>
 
       {/* Approve Modal */}

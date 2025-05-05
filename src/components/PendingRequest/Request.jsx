@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import Cookies from "js-cookie";
 import { api } from "../../api";
+import { FaRegFrown } from "react-icons/fa";
 
 const Request = () => {
   const [pendingRequests, setPendingRequests] = useState([]);
@@ -160,9 +161,19 @@ const Request = () => {
             </thead>
             <tbody>
               {paginated.length === 0 ? (
+                // <tr>
+                //   <td colSpan="5" className="text-center text-muted py-3">
+                //     No requests available
+                //   </td>
+                // </tr>
                 <tr>
-                  <td colSpan="5" className="text-center text-muted py-3">
-                    No requests available
+                  <td colSpan="8" className="text-center py-5">
+                    <div>
+                      <div style={{ fontSize: "3rem", color: "#999" }}>
+                        <FaRegFrown />
+                      </div>
+                      <div className="mt-2 text-muted">No Request found</div>
+                    </div>
                   </td>
                 </tr>
               ) : (
@@ -227,11 +238,13 @@ const Request = () => {
 
   return (
     <div className="container">
-      {/* <h2 className="text-center text-primary mb-4">
-        Course Enrollment Requests
-      </h2> */}
       <div className="card p-4 shadow-lg border-0 rounded-3 bg-light">
-        <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
+        {/* <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3"> */}
+        <Tabs defaultActiveKey="all" id="student-tab" className="mb-3">
+          <Tab eventKey="all" title="All Requests">
+            {renderTable(allRequests)}
+          </Tab>
+
           <Tab
             eventKey="pending"
             title={
@@ -244,9 +257,6 @@ const Request = () => {
             }
           >
             {renderTable(pendingRequests)}
-          </Tab>
-          <Tab eventKey="all" title="All Requests">
-            {renderTable(allRequests)}
           </Tab>
         </Tabs>
       </div>

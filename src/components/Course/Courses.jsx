@@ -10,7 +10,14 @@ import {
   Alert,
   Modal,
 } from "react-bootstrap";
-import { FaTrash, FaSearch, FaEdit, FaEye, FaBookOpen } from "react-icons/fa";
+import {
+  FaTrash,
+  FaSearch,
+  FaEdit,
+  FaEye,
+  FaBookOpen,
+  FaRegFrown,
+} from "react-icons/fa";
 
 import AddCourse from "./Modal/AddCourse";
 import UpdateCourse from "./Modal/UpdateCourse";
@@ -130,6 +137,7 @@ const Courses = () => {
                     <th>⏳ Duration (Minutes)</th>
                     <th>⭐ Rating</th>
                     <th>👥 Rating Count</th>
+                    <th>📖 Created By</th>
                     <th>🎥 Media</th>
                     {/* <th>👤 Created By</th> */}
                     <th>⚙️ Action</th>
@@ -137,9 +145,21 @@ const Courses = () => {
                 </thead>
                 <tbody>
                   {currentItems.length === 0 ? (
+                    // <tr>
+                    //   <td colSpan="10" className="text-center text-muted py-3">
+                    //     No courses available
+                    //   </td>
+                    // </tr>
                     <tr>
-                      <td colSpan="10" className="text-center text-muted py-3">
-                        No courses available
+                      <td colSpan="8" className="text-center py-5">
+                        <div>
+                          <div style={{ fontSize: "3rem", color: "#999" }}>
+                            <FaRegFrown />
+                          </div>
+                          <div className="mt-2 text-muted">
+                            No courses available
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   ) : (
@@ -168,9 +188,17 @@ const Courses = () => {
                             className="rounded"
                           />
                         </td>
-                        <td>{course.courseDuration} min</td>
+                        {/* <td>{course.courseDuration} min</td> */}
+                        <td>
+                          {course.courseDuration
+                            ? `${Math.ceil(
+                                Number(course.courseDuration) / 60
+                              )} min`
+                            : "N/A"}
+                        </td>
                         <td>{course.rating}</td>
                         <td>{course.ratingCount}</td>
+                        <td>{course.createdBy || "N/A"}</td>
                         {/* <td>
                           <Button
                             variant="success"

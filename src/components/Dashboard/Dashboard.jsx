@@ -40,7 +40,7 @@ const Dashboard = () => {
       bg: "linear-gradient(135deg, #74ebd5, #ACB6E5)",
     },
     {
-      label: "Total Instructors",
+      label: "Total Facilitators",
       value: stats.totalInstructors,
       icon: <FaChalkboardTeacher size={30} />,
       bg: "linear-gradient(135deg, #f093fb, #f5576c)",
@@ -52,7 +52,7 @@ const Dashboard = () => {
       bg: "linear-gradient(135deg, #43e97b, #38f9d7)",
     },
     {
-      label: "Total Categories",
+      label: "Total Sevices",
       value: stats.totalCategories,
       icon: <FaLayerGroup size={30} />,
       bg: "linear-gradient(135deg, #ffecd2, #fcb69f)",

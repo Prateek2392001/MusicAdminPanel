@@ -14,6 +14,7 @@ import UpdateEntry from "./FeeEntry/UpdateEntry";
 import { api } from "../../api";
 import ViewHistoryModal from "./Modal/ViewHistoryModal";
 import "./FeeCard.css"; // Import your CSS file for styling
+import { FaRegFrown } from "react-icons/fa";
 
 const FeeManagement = () => {
   const [entries, setEntries] = useState([]);
@@ -238,9 +239,19 @@ const FeeManagement = () => {
                 </tr>
               ))}
               {getFilteredEntries().length === 0 && (
+                // <tr>
+                //   <td colSpan="8" className="text-center">
+                //     No entries found.
+                //   </td>
+                // </tr>
                 <tr>
-                  <td colSpan="8" className="text-center">
-                    No entries found.
+                  <td colSpan="8" className="text-center py-5">
+                    <div>
+                      <div style={{ fontSize: "3rem", color: "#999" }}>
+                        <FaRegFrown />
+                      </div>
+                      <div className="mt-2 text-muted">No Fees found</div>
+                    </div>
                   </td>
                 </tr>
               )}

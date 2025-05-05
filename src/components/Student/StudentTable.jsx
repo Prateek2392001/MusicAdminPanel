@@ -3,7 +3,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "js-cookie";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { FaSearch, FaEdit, FaTrash } from "react-icons/fa";
+import { FaSearch, FaEdit, FaTrash, FaRegFrown } from "react-icons/fa";
 import AddStudent from "./Modal/AddStudent";
 import UpdateStudent from "./Modal/UpdateStudent";
 import DeleteStudent from "./Modal/DeleteStudent";
@@ -133,9 +133,21 @@ const StudentTable = () => {
               </thead>
               <tbody>
                 {currentItems.length === 0 ? (
+                  // <tr>
+                  //   <td colSpan="5" className="text-center text-muted py-3">
+                  //     No students available
+                  //   </td>
+                  // </tr>
                   <tr>
-                    <td colSpan="5" className="text-center text-muted py-3">
-                      No students available
+                    <td colSpan="8" className="text-center py-5">
+                      <div>
+                        <div style={{ fontSize: "3rem", color: "#999" }}>
+                          <FaRegFrown />
+                        </div>
+                        <div className="mt-2 text-muted">
+                          No students available
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 ) : (

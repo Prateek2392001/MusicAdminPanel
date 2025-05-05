@@ -3,7 +3,7 @@ import axios from "axios";
 import { Table, Button, Spinner, Pagination } from "react-bootstrap";
 import { api } from "../../api";
 import DeleteRating from "./Modal/DeleteRating";
-import { FaTrash } from "react-icons/fa";
+import { FaRegFrown, FaTrash } from "react-icons/fa";
 import RateCourseModal from "./Modal/RateCourseModal";
 
 const Ratings = () => {
@@ -95,26 +95,39 @@ const Ratings = () => {
               </tr>
             </thead>
             <tbody>
-              {currentRatings.map((item, index) => (
-                <tr key={index}>
-                  <td>{indexOfFirst + index + 1}</td>
-                  <td>{item.studentID?.name}</td>
-                  <td>{item.courseID?.name}</td>
-                  <td>{item.rating}</td>
-                  <td>{item.review}</td>
-                  <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-                  <td>{new Date(item.updatedAt).toLocaleDateString()}</td>
-                  <td>
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      onClick={() => handleDeleteClick(item)}
-                    >
-                      <FaTrash />
-                    </Button>
+              {currentRatings.length === 0 ? (
+                <tr>
+                  <td colSpan="8" className="text-center py-5">
+                    <div>
+                      <div style={{ fontSize: "3rem", color: "#999" }}>
+                        <FaRegFrown />
+                      </div>
+                      <div className="mt-2 text-muted">No ratings found</div>
+                    </div>
                   </td>
                 </tr>
-              ))}
+              ) : (
+                currentRatings.map((item, index) => (
+                  <tr key={index}>
+                    <td>{indexOfFirst + index + 1}</td>
+                    <td>{item.studentID?.name}</td>
+                    <td>{item.courseID?.name}</td>
+                    <td>{item.rating}</td>
+                    <td>{item.review}</td>
+                    <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                    <td>{new Date(item.updatedAt).toLocaleDateString()}</td>
+                    <td>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => handleDeleteClick(item)}
+                      >
+                        <FaTrash />
+                      </Button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </Table>
           {ratings.length > itemsPerPage && (

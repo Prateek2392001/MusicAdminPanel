@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { FaTrash, FaSearch, FaEdit } from "react-icons/fa";
+import { FaTrash, FaSearch, FaEdit, FaRegFrown } from "react-icons/fa";
 import AddTeacher from "./Modal/AddTeacher";
 import UpdateTeacher from "./Modal/UpdateTeacher";
 import DeleteTeacher from "./Modal/DeleteTeacher";
@@ -105,9 +105,22 @@ const TeacherTable = () => {
               </thead>
               <tbody>
                 {currentItems.length === 0 ? (
+                  // <tr>
+                  //   <td colSpan="10" className="text-center text-muted py-3">
+                  //     No instructors available
+                  //   </td>
+                  // </tr>
                   <tr>
-                    <td colSpan="10" className="text-center text-muted py-3">
-                      No instructors available
+                    <td colSpan="8" className="text-center py-5">
+                      <div>
+                        <div style={{ fontSize: "3rem", color: "#999" }}>
+                          <FaRegFrown />
+                        </div>
+                        <div className="mt-2 text-muted">
+                          {" "}
+                          No Facilitators available
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 ) : (
@@ -128,7 +141,7 @@ const TeacherTable = () => {
                       </td>
 
                       <td>{instructor.name}</td>
-                      <td>{instructor.designation || "N/A"}</td>
+                      <td>{instructor.occupation || "N/A"}</td>
                       <td>{instructor.email}</td>
                       <td>{instructor.contact}</td>
 

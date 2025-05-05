@@ -37,21 +37,21 @@ const Sidebar = ({ open }) => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to={"/courses"} className="nav-link">
-            <i className="bi bi-book mx-2 fw-bold"></i>
-            <span className="menu-title">Courses</span>
+          <Link to={"/teachers"} className="nav-link">
+            <i className="bi bi-person-badge mx-2 fw-bold"></i>
+            <span className="menu-title">Facilitators</span>
           </Link>
         </li>
         <li className="nav-item">
           <Link to={"/categories"} className="nav-link">
             <i className="bi bi-layers mx-2 fw-bold"></i>
-            <span className="menu-title">Categories</span>
+            <span className="menu-title">Services</span>
           </Link>
         </li>
         <li className="nav-item">
-          <Link to={"/teachers"} className="nav-link">
-            <i className="bi bi-person-badge mx-2 fw-bold"></i>
-            <span className="menu-title">Teachers</span>
+          <Link to={"/courses"} className="nav-link">
+            <i className="bi bi-book mx-2 fw-bold"></i>
+            <span className="menu-title">Courses</span>
           </Link>
         </li>
         <li className="nav-item">
